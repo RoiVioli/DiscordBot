@@ -1,17 +1,35 @@
 import discord
+import requests
+import json
+
 
 class myclient(discord.Client):
     async def on_ready(self):
         print("Logged on as {0}".format(self.user))
 
+    async def on_message(self, message):  # Déplacez cette méthode à l'intérieur de la classe
+        if message.author == self.user:
+            return
+        
+        if message.content.startswith("!hello"):  # Correction de l'orthographe
+            await message.channel.send("Hi :)")
+        if message.content.startswith("!meme"):
+            await message.channel.send(get_meme())
+
+def get_meme():
+    response = requests.get('https://meme-api.com/gimme')
+    json_data = json.loads(response.text)
+    return json_data['url']
+    
+
+
+        
+# Initialisez les intents
 intents = discord.Intents.default()
 intents.message_content = True
-client = myclient(intents=intents)
-client.run("MTMwMzExNjg5NjQxMjg5MzIzNA.GRd9JL.Zvl6dG9_Fp7S2XqeDupVw0KLOHc58RvY1hivbE")
 
-async def on_message(self, message):
-    if message.author == self.user:
-        return
-    
-    if message.content.startswitch("$hello"):
-        await message.channel.send("Hi (:")
+# Créez une instance de votre client
+client = myclient(intents=intents)
+
+# Exécutez le bot
+client.run("MTMwMzExNjg5NjQxMjg5MzIzNA.Gg1dde.2ruMR2adpWBqPdpNQD0ajvyVvZExHCFdHPT0xw")  # Remplacez par votre clé API en toute sécurité
