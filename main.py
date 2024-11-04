@@ -8,3 +8,10 @@ intents = discord.Intents.default()
 intents.message_content = True
 client = myclient(intents=intents)
 client.run("MTMwMzExNjg5NjQxMjg5MzIzNA.GRd9JL.Zvl6dG9_Fp7S2XqeDupVw0KLOHc58RvY1hivbE")
+
+async def on_message(self, message):
+    if message.author == self.user:
+        return
+    
+    if message.content.startswitch("$hello"):
+        await message.channel.send("Hi (:")
