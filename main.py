@@ -11,7 +11,7 @@ class myclient(discord.Client):
         if message.author == self.user:
             return
         
-        if message.content.startswith("!hello"):  # Correction de l'orthographe
+        if message.content.startswith("!hello"):  
             await message.channel.send("Hi :)")
         if message.content.startswith("!meme"):
             await message.channel.send(get_meme())
@@ -28,7 +28,7 @@ def get_meme():
 intents = discord.Intents.default()
 intents.message_content = True
 
-# Créez une instance de votre client
+# Créez une instance client
 client = myclient(intents=intents)
 
 # Exécutez le bot
