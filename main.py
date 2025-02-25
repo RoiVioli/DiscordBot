@@ -32,4 +32,4 @@ intents.message_content = True
 client = myclient(intents=intents)
 
 # Exécutez le bot
-client.run("MTMwMzExNjg5NjQxMjg5MzIzNA.Gg1dde.2ruMR2adpWBqPdpNQD0ajvyVvZExHCFdHPT0xw")  # Remplacez par votre clé API en toute sécurité
+client.run("TOKEN")  # Remplacez par votre clé API en toute sécurité
